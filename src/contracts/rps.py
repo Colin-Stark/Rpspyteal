@@ -26,17 +26,13 @@ Draws = Bytes('Draw')
 @Subroutine(TealType.none)
 def reset_round(account1 : Expr, account2 : Expr):
     return Seq(App.localPut(account1 ,local_play , Bytes("")),
-                App.localPut(account1 , local_play , Bytes("")),
                 App.localPut(account2 ,local_play , Bytes("")),
-                App.localPut(account2 , local_play , Bytes("")),
                 App.globalPut(round , App.globalGet(round ) - Int(1)),
     )
 
 @Subroutine(TealType.none)
 def reset_all(account1 : Expr, account2 : Expr):
     return Seq(App.localPut(account1 , local_play , Bytes("")),
-                App.localPut(account1 , local_play , Bytes("")),
-                App.localPut(account2 , local_play , Bytes("")),
                 App.localPut(account2 , local_play , Bytes("")),
                 App.globalPut(round , Int(0)),
                 App.globalPut(wager , Int(0)),
